@@ -147,8 +147,8 @@ class UserProfInfo:
         return bio
 
     def get_uid(self):
-        uid_hex = self.find_btw(b"home\x0c[", b"\x0fk\x00")
-        uid = int.from_bytes(uid_hex, 'big')
+        uid = self.find_btw(b"user", b"\x00")[:-2]
+        uid = int(uid.decode())
         return uid
 
     def get_username(self):
