@@ -15,17 +15,17 @@ class Crasher(commands.Cog):
         self.cooldown = Cooldown('crasher_cooldown')
 
         self.crash_uids = []
-        try:
-            self.read_crash_list()
-        except:
-            print("error reading crash list")
-
         # crasher_creds = [(f"r{i}@r.com", "password") for i in range(1,6)]
 
         crasher_creds = json.loads(os.getenv('crasher_logins'))
         self.crasher_clients = [CrasherClient(email, pwd, self.crash_uids) for email, pwd in crasher_creds.items()]
         # self.crasher_clients = [CrasherClient("teehee@nn.com", "password", self.crash_uids)]
+          try:
+            self.read_crash_list()
+        except:
+            print("error reading crash list")
 
+      
     def read_crash_list(self):
         with open('crasher_list.json') as f:
             d = json.load(f)
