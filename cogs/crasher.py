@@ -15,12 +15,22 @@ class Crasher(commands.Cog):
         self.cooldown = Cooldown('crasher_cooldown')
 
         self.crash_uids = []
+        try:
+            self.read_crash_list()
+        except:
+            print("error reading crash list")
 
         # crasher_creds = [(f"r{i}@r.com", "password") for i in range(1,6)]
 
         crasher_creds = json.loads(os.getenv('crasher_logins'))
         self.crasher_clients = [CrasherClient(email, pwd, self.crash_uids) for email, pwd in crasher_creds.items()]
         # self.crasher_clients = [CrasherClient("teehee@nn.com", "password", self.crash_uids)]
+
+    def read_crash_list(self):
+        with open('crasher_list.json') as f:
+            d = json.load(f)
+        self.crash_uids = [(u,s) for u,s in d.items()]
+        self.update_payload()
 
     def update_payload(self):
         for crasher_client in self.crasher_clients:
@@ -31,8 +41,6 @@ class Crasher(commands.Cog):
     @commands.guild_only()
     async def add_crash(self, ctx, *, name):
         """Crashes the user"""
-        if not self.cooldown.is_whitelisted(ctx):
-            return
         
         if name[-1] == "_":
             uid = int(name[:-1])
@@ -45,10 +53,16 @@ class Crasher(commands.Cog):
                 await ctx.send(f'Try again after few minutes.')
                 return
         if uid:
+            d={}
             self.crash_uids.append((uid, searched_user))
+            for uid, searched_user in self.crash_uids:
+                d[uid] = searched_user
+            
+            with open('crash_list.json', 'w') as f:
+                json.dump(d,f, indent=4)
             self.update_payload()
             embed = discord.Embed(title=f"Crashing\n{searched_user}  ```{uid}```", colour=discord.Colour(0xcc0000))
-            self.cooldown.add(ctx)
+            # self.cooldown.add(ctx)
             await ctx.send(embed=embed)
         else:
             await ctx.send(f'{name} not found.')
@@ -72,8 +86,6 @@ class Crasher(commands.Cog):
     @commands.guild_only()
     async def list_crash(self, ctx):
         """Prints crashing list"""
-        if not self.cooldown.is_whitelisted(ctx):
-            return
         
         str_uids = [f"```{name}```" for uid, name in self.crash_uids]
         if str_uids:
