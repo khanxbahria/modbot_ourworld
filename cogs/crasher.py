@@ -20,7 +20,7 @@ class Crasher(commands.Cog):
         crasher_creds = json.loads(os.getenv('crasher_logins'))
         self.crasher_clients = [CrasherClient(email, pwd, self.crash_uids) for email, pwd in crasher_creds.items()]
         # self.crasher_clients = [CrasherClient("teehee@nn.com", "password", self.crash_uids)]
-          try:
+        try:
             self.read_crash_list()
         except:
             print("error reading crash list")
