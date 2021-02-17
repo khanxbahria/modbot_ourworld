@@ -22,8 +22,8 @@ class Crasher(commands.Cog):
         # self.crasher_clients = [CrasherClient("teehee@nn.com", "password", self.crash_uids)]
         try:
             self.read_crash_list()
-        except:
-            print("error reading crash list")
+        except Exception as e:
+            print("error reading crash list", e)
 
       
     def read_crash_list(self):
