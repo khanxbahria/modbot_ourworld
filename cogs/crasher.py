@@ -41,6 +41,8 @@ class Crasher(commands.Cog):
     @commands.guild_only()
     async def add_crash(self, ctx, *, name):
         """Crashes the user"""
+        await ctx.message.delete()
+
         
         if name[-1] == "_":
             uid = int(name[:-1])
@@ -71,6 +73,8 @@ class Crasher(commands.Cog):
     @commands.guild_only()
     async def stop_crash(self, ctx, *, name):
         """Stops crashing the user"""
+        await ctx.message.delete()
+
         if not self.cooldown.is_whitelisted(ctx):
             return
 
@@ -86,6 +90,8 @@ class Crasher(commands.Cog):
     @commands.guild_only()
     async def list_crash(self, ctx):
         """Prints crashing list"""
+        await ctx.message.delete()
+        
         
         str_uids = [f"```{name}```" for uid, name in self.crash_uids]
         if str_uids:

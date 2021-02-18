@@ -39,6 +39,8 @@ class UserInfo(commands.Cog):
     @commands.guild_only()
     async def detailed_userinfo(self, ctx, *, name):
         """Detailed user info"""
+        await ctx.message.delete()
+
         if name[-1] == "_":
             uid = int(name[:-1])
         else:
@@ -69,6 +71,8 @@ class UserInfo(commands.Cog):
     @commands.guild_only()
     async def locate_user(self, ctx, *, name):
         """Locate user"""
+        await ctx.message.delete()
+        
         username, uid = await self.async_get_uid(name)
         if not uid:
             await ctx.send(f'{name} not found.')

@@ -22,12 +22,6 @@ async def on_ready():
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="ourWorld die."))
     print(f"{bot.user} has connected to Discord.")
 
-@bot.event
-async def on_message(msg):
-    if msg.author == bot.user:
-        return
-    await msg.delete()
-
 @bot.command()
 async def help(ctx):
     embed = discord.Embed(title="ModBot - Help", colour=discord.Colour(0x1e041f), description="ModBot is a basic ourWorld bot that features a collection of unpatched exploits in the game. The bot has its own accounts to interact with the game and it does not get linked with the target account in any way. The features provided here are only a Proof-of-Concept of unpatched glitches.")
