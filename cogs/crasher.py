@@ -29,7 +29,7 @@ class Crasher(commands.Cog):
     def read_crash_list(self):
         with open('crash_list.json') as f:
             d = json.load(f)
-        self.crash_uids = [(int(u),s) for u,s in d.items()]
+        self.crash_uids += [(int(u),s) for u,s in d.items()]
         self.update_payload()
 
     def update_payload(self):
