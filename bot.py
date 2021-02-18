@@ -26,9 +26,8 @@ async def on_ready():
 async def help(ctx):
     embed = discord.Embed(title="ModBot - Help", colour=discord.Colour(0x1e041f), description="ModBot is a basic ourWorld bot that features a collection of unpatched exploits in the game. The bot has its own accounts to interact with the game and it does not get linked with the target account in any way. The features provided here are only a Proof-of-Concept of unpatched glitches.")
 
-    embed.set_footer(text="khanxbahria")
 
-    embed.add_field(inline=False,name="```!gems <ign>``` ```!g <ign>```", value="```Exploits Jungroup offers to get gems. (Server boosters only)```")
+    embed.add_field(inline=False,name="```!crash <ign>``` ```!c <ign>```", value="```Crashes user```")
     embed.add_field(inline=False,name="```!user <ign>``` ```!u <ign>```", value="``` View profiles of ourWorld accounts```")
     embed.add_field(inline=False,name="```!locate <ign>``` ```!l <ign>```", value=" ```Locate an ourWorld user```")
 
