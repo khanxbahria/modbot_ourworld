@@ -26,7 +26,7 @@ async def on_ready():
 async def on_message(msg):
     if msg.author == bot.user:
         return
-    await bot.delete_message(msg)
+    await msg.delete()
 
 @bot.command()
 async def help(ctx):
