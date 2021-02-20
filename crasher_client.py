@@ -43,7 +43,7 @@ class CrasherClient:
             second_sock.sendall(msg)
 
         throw_sock = create_socket()
-        throw_sock.sendall(encode(b'\x00\x00\x00\xbb\x01\x00\x00\x00\t\x00\x00\x00=\xff\xf5\x1a\xe1\x00\x12game2.ourworld.com\x0cB\x00\x00\x00\x04\x0e\xe2\x00\x00$^\x18<\x00\x04town\x18E\x00\x1aarcadia-boardwalk-exterior\x18\xc6\x00\x04home\x18Z\x00 '+self.account.auth_id.encode()+b'\x0fk\x00\x00\x00\x006\x8c\x15f9a\x00\x00\x01q\x18\xcd\x00\x1aarcadia-boardwalk-exterior\x0c\x1e\x00\x00\x00\x00\x00\x01\x00C\x00\x00\x00\x00'))
+        # throw_sock.sendall(encode(b'\x00\x00\x00\xbb\x01\x00\x00\x00\t\x00\x00\x00=\xff\xf5\x1a\xe1\x00\x12game2.ourworld.com\x0cB\x00\x00\x00\x04\x0e\xe2\x00\x00$^\x18<\x00\x04town\x18E\x00\x1aarcadia-boardwalk-exterior\x18\xc6\x00\x04home\x18Z\x00 '+self.account.auth_id.encode()+b'\x0fk\x00\x00\x00\x006\x8c\x15f9a\x00\x00\x01q\x18\xcd\x00\x1aarcadia-boardwalk-exterior\x0c\x1e\x00\x00\x00\x00\x00\x01\x00C\x00\x00\x00\x00'))
         msgs = [(b"<m>AAAAEQEAAAAKAAwBGwABDBQAAAAM</m>\x00", 2), (b"<m>AAAAMwEAAAALAAAABgADDEAAAAI2GDwADGNvbm5lY3QgdGltZRgVAA5Xb3JsZDogQ29ubmVjdA==</m>\x00", 1), (b"<m>AAAAIwEAAAANAAgAD//+DBQAAAAIDGEAAAACAAEAZAABDD4ALcyf</m>\x00", 2), (b"<m>AAAAFwEAAAAMAAAAegADCBgAAAgWAPsIFwN6</m>\x00", 1), (b"<m>AAAADQEAAAAOAAAAugAAAAA=</m>\x00", 2), (b"<m>AAAADQEAAAAPAAAAlwAAAAA=</m>\x00", 1), (b"<m>AAAADQEAAAAQAAAA9wAAAAA=</m>\x00", 1), (b"<m>AAAAHQEAAAARAAAAUgACGGEACGxvY2F0aW9uDFsAAXcB</m>\x00", 1), (encode(b'\x00\x00\x00\x1d\x01\x00\x00\x00\x13\x00\x00\x00R\x00\x02\x18a\x00\x08location\x0c[' + self.account.uid_hex), 1), (b"<m>AAAAEQEAAAAWAAgABQABDBQAAAAI</m>\x00", 2), (encode(b'\x00\x00\x00\x1e\x01\x00\x00\x00\x14\x00\x00\x00\x04\x00\x03\x0c['+self.account.uid_hex+b'\x18\x15\x00\x06helper\x10v\x00'), 1), (b'<m>AAAAIwEAAAAXAAgAD//+DBQAAAAIDGEAAAACAAEAZAABDD4AHvYq</m>\x00', 2), (b"<m>AAAADQEAAAAVAAAAnwAAAAA=</m>\x00", 1), (b"<m>AAAAEQEAAAAfAAAAoQABDD4AAAGI</m>\x00", 1), (b"<m>AAAADQEAAAAZAAABCQAAAAA=</m>\x00", 2), (b"<m>AAAAFwEAAAAaAAABJwACDDwAAAABDEQAAAAJ</m>\x00", 2), (b"<m>AAAADQEAAAAbAAABGwAAAAA=</m>\x00", 2), (b"<m>AAAADQEAAAAcAAABDQAAAAA=</m>\x00", 2), (encode(b'\x00\x00\x00\x11\x01\x00\x00\x00\x1d\x00\x00\x00\xfa\x00\x01\x0c[' + self.account.uid_hex), 2)]
         for msg, sock_num in msgs:
             if sock_num == 1:
@@ -52,7 +52,7 @@ class CrasherClient:
                 second_sock.sendall(msg)
 
 
-        msg = encode(b'\x00\x00\x00m\x01\x00\x00\x00\xf2\x00\x00\x00>\xff\xf8\x1a\xe1\x00\x12game2.ourworld.com\x0cB\x00\x00\x00\x04\x18E\x00\rcondos/condo1\x18\xc6\x00\x04home\x0e\xe2\x00\x00$^\x18<\x00\x04town\x18\xcd\x00\rcondos/condo1\x0c\x1e'+self.account.uid_hex+b'\x00\x01\x00C\x00\x00\x00\x00')
+        # msg = encode(b'\x00\x00\x00m\x01\x00\x00\x00\xf2\x00\x00\x00>\xff\xf8\x1a\xe1\x00\x12game2.ourworld.com\x0cB\x00\x00\x00\x04\x18E\x00\rcondos/condo1\x18\xc6\x00\x04home\x0e\xe2\x00\x00$^\x18<\x00\x04town\x18\xcd\x00\rcondos/condo1\x0c\x1e'+self.account.uid_hex+b'\x00\x01\x00C\x00\x00\x00\x00')
         throw_sock.sendall(msg)
         throw_sock.sendall(msg)
         time.sleep(2)
